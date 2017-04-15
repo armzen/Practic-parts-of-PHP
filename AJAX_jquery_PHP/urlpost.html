@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery AJAX Post</title>
+	<style>
+	body{ text-align: center;}
+		#set_place{
+			width:70%;
+			border: 4px solid #689788;
+			transform: scale(0.8);
+			margin: -50px auto;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+<h1> Upload web-page into div-s.</h1>
+<ul>
+	<li>php's URL</li>
+	<li>data</li>
+	<li>callback</li>
+</ul>
+	<div id="set_place">the site will be here, vmesto this page.</div>
+	<script>
+		$(function(){
+			
+			$.post( 'urlpost.php', 
+					{url: 'www.tutorialrepublic.com/'},
+					function(result){
+						$('#set_place').html(result)
+					});			
+		});
+	</script>
+</body>
+</html>

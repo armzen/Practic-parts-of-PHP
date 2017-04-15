@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mail form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <style>
+        #messform{
+            width: 52vw;
+        }
+        #result{
+            color: #33a333;
+            font-weight: 600;
+        }
+        #result h4{
+            margin: 0;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <form id="messform">
+        <fieldset>
+            Name:<input type="text" id="name">
+            Email:<input type="text" id="email">
+            Phone:<input type="tel" id="phone"><br><br>
+            <textarea rows="5" cols="90" id="message"></textarea><br>
+            <button type="submit" id="send">send</button>
+        </fieldset>
+    </form>
+    <div id="result"></div>
+    
+    <script>
+    $(document).ready(function(){
+        
+        $('#send').click(function(){
+           $('#result').text('please, little weit ...');
+        });
+        
+        $("#messform").submit(function(evt){
+            evt.preventDefault();
+            $.post("mail.php",
+                {
+                    name: $("#name").val(),
+                    email:$("#email").val(),
+                    phone:$("#phone").val(),
+                    message:$("#message").val()
+                },
+                function(data, success){
+                   $("#result").html(data);
+                }
+            );
+        });
+    });
+    </script>
+</body>
+</html>
